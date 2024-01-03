@@ -1,0 +1,77 @@
+.Navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  font-size: larger;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.logo {
+  order: 1;
+}
+
+.nav-items {
+  order: 2;
+}
+
+.nav-items ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+}
+
+.nav-items ul li:hover {
+  color: maroon;
+}
+
+.buttons {
+  order: 3;
+}
+
+.buttons button {
+  margin-left: 10px;
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  font-size: medium;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.btnLogin {
+  background-color: black;
+  color: white;
+}
+
+.toggleButton {
+  display: none;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+@media only screen and (max-width: 1000px) {
+  .buttons {
+    display: none;
+  }
+
+  .nav-items {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+  }
+
+  .show {
+    display: block;
+  }
+
+  .toggleButton {
+    display: block;
+  }
+  .logo {
+    margin-left: 0;
+  }
+}

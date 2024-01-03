@@ -1,0 +1,109 @@
+<div class="container">
+  <h1>Book interview date</h1>
+  <div class="split-container">
+    <div class="userInfo">
+      <div *ngIf="user">
+        <p><strong> First name : </strong> {{ user.firstName }}</p>
+        <p><strong>Last name : </strong>{{ user.lastName }}</p>
+        <p><strong>Email : </strong> {{ user.email }}</p>
+      </div>
+    </div>
+
+    <div class="bookingForm">
+      <form #myform="ngForm" (ngSubmit)="onSubmit(myform)">
+        <label for="date"> Date : </label>
+        <input
+          type="date"
+          class="form-control"
+          id="date"
+          name="date"
+          placeholder="Enter date of interview"
+          [min]="getCurrentDate()"
+          ngModel
+          required
+        />
+        <div
+          class="error-message"
+          *ngIf="myform.submitted && myform.controls['date'].invalid"
+        >
+          Must choose a date!
+        </div>
+        <br />
+        <label for="time"> Time : </label>
+        <input
+          type="time"
+          class="form-control"
+          id="time"
+          name="time"
+          placeholder="Enter time of interview"
+          [min]="getMinTime()"
+          [max]="getMaxTime()"
+          ngModel
+          required
+        />
+        <div
+          class="error-message"
+          *ngIf="myform.submitted && myform.controls['time'].invalid"
+        >
+          Must choose a time!
+        </div>
+        <br />
+
+        <div
+          class="btn-group-horizental"
+          role="group"
+          aria-label="horizental radio toggle button group"
+        >
+          <label for="time"> Place : </label>
+          <input
+            type="radio"
+            class="btn-check"
+            name="vbtn-radio"
+            id="vbtn-radio1"
+            autocomplete="off"
+            checked
+            value="online"
+            ngModel
+          />
+          <label class="btn btn-outline-danger" for="vbtn-radio1">Online</label>
+          <input
+            type="radio"
+            class="btn-check"
+            name="vbtn-radio"
+            id="vbtn-radio2"
+            autocomplete="off"
+            value="company"
+            ngMode
+          />
+          <label class="btn btn-outline-danger" for="vbtn-radio2"
+            >Company</label
+          >
+        </div>
+        <input
+          type="hidden"
+          name="userId"
+          *ngIf="user"
+          [ngModel]="user?._id || ''"
+        />
+
+        <div class="hr">
+          <label for="hrUser"> Select HR : </label>
+          <select class="custom-select custom-select-lg mb-3" name="hr" ngModel>
+            <option *ngFor="let hr of hrs" [value]="hr.index">
+              {{ hr.firstName }} <strong>{{ hr.lastName }}</strong>
+            </option>
+          </select>
+        </div>
+
+        <br />
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="onSubmit(myform)"
+        >
+          Book
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

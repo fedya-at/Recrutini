@@ -1,0 +1,16 @@
+<!-- navbar.component.html -->
+<div class="Navbar">
+  <div class="logo">Logo</div>
+  <div class="nav-items" [ngClass]="{ show: navbarVisible }" #navItems>
+    <ul>
+      <li>Jobs</li>
+      <li>Companies</li>
+      <li>Resumes</li>
+    </ul>
+  </div>
+  <div class="buttons">
+    <button class="btnLogin">Login</button>
+    <button class="btnSignup">Sign Up</button>
+  </div>
+  <button class="toggleButton" (click)="toggleNavbar()">&#9776;</button>
+</div>

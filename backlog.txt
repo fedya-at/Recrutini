@@ -1,0 +1,73 @@
+Sprint Backlog for "Plannification des entretiens" Task:
+
+
+
+Sprint 1: Define Requirements and Setup
+
+Define User and Appointment Models (2 days):
+
+Define the User model with properties like name, email, and role.
+Define the Appointment model with properties for interview details (e.g., date, time, candidate details).
+MEAN Stack Setup (1 day):
+
+Set up MongoDB: Create a database and establish a connection.
+Set up Express.js: Create routes and controllers for handling User and Appointment data.
+Set up Angular: Create components for listing candidates and displaying the calendar.
+Set up Node.js: Implement server-side logic for CRUD operations.
+Sprint 2: Candidate Listing and HR Selection
+
+User Model CRUD Operations (4 days):
+
+Implement a service in Angular for fetching and displaying a list of candidates.
+Create Angular components to list and display candidate details.
+Implement Angular forms for adding, updating, and deleting candidates.
+HR Selection Functionality (3 days):
+
+Enhance the UI to allow HR to select a candidate from the list.
+Update the User model to include a field indicating whether a candidate has been selected.
+Implement logic to handle HR's candidate selection in the backend.
+Sprint 3: Google Meet Link Generation
+
+Appointment Model and Link Generation (5 days):
+Implement the Appointment model with fields for storing interview details.
+Create a service in Angular for generating a unique Google Meet link.
+Integrate link generation logic with the Appointment model and backend.
+Sprint 4: Calendar Display for Appointments
+
+Calendar Component (6 days):
+Design and implement an Angular calendar component.
+Fetch and display scheduled appointments from the Appointment model.
+Allow users to view appointment details by clicking on specific dates.
+Sprint 5: Integration Testing and Validation
+
+Integration Testing (3 days):
+
+Write unit tests for Angular components and services.
+Write integration tests for backend CRUD operations and link generation.
+Ensure proper error handling and edge case scenarios are covered.
+Validation (2 days):
+
+Validate the end-to-end flow by simulating HR actions, candidate selection, link generation, and calendar display.
+Address any issues identified during the validation phase.
+Sprint 6: User Interface (UI) Refinement and Documentation
+
+UI Refinement (4 days):
+
+Polish the UI for a modern and intuitive look.
+Implement responsive design for optimal user experience on various devices.
+Add user feedback and notifications for key actions.
+Documentation (3 days):
+
+Document the structure of the User and Appointment models in MongoDB.
+Create user guides for using the application, including step-by-step instructions.
+Document any configuration steps required for deploying the application.
+Sprint 7: Final Testing and Deployment
+
+Final Testing (4 days):
+
+Conduct a final round of testing, including regression testing.
+Address any issues discovered during final testing.
+Deployment (2 days):
+
+Prepare the application for deployment to a production environment.
+Deploy the MEAN stack application, ensuring proper configuration and security measures are in place.

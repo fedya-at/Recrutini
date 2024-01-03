@@ -1,0 +1,41 @@
+<div class="CalendarPage">
+  <h2>Calendar</h2>
+      <button class="btn btn-secondary" (click)="addAppointment()">Add Appointment</button>
+
+  <div class="container">
+    <div class="calendar">
+      <mwl-calendar-month-view
+        [viewDate]="viewDate"
+        [events]="appointments"
+        (dayClicked)="dayClicked($event)"
+      ></mwl-calendar-month-view>
+    </div>
+    <div></div>
+    <div class="calendar-details" *ngIf="selectedDate !== undefined">
+      <h2>Appointments for {{ selectedDate | date: 'longDate' }}</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Time</th>
+            <th scope="col">HR </th>
+            <th scope="col">Candidate</th>
+            <th scope="col">Google Meet Link</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of selectedDateAppointments">
+            <td><strong>{{ appointment.time }}</strong></td>
+            <td>{{ appointment.hrInfo }}</td>
+            <td>{{ appointment.candidateInfo }}</td>
+            <td><a href="{{ appointment.googleMeetLink }}" >Join Meet</a></td>
+            <td>
+              <button class="btn btn-primary" (click)="editAppointment(appointment)">Edit</button>
+              <button class="btn btn-danger" (click)="deleteAppointment(appointment.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+.container {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.card {
+  width: 300px;
+  padding: 20px;
+  margin-bottom: 30px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fcfcfc;
+  box-shadow: 0 0 5px #ccc;
+}
+
+.title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.company {
+  font-size: 18px;
+  color: #777;
+  margin-bottom: 5px;
+}
+
+.location {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.dateFin {
+  font-size: 14px;
+  color: #777;
+}
+@media only screen and (max-width: 768px) {
+  .card {
+    width: calc(100% - 20px);
+  }
+}

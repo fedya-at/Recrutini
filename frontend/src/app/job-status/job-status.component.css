@@ -1,0 +1,29 @@
+.container {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+}
+
+.card {
+  width: 300px;
+  height: 200px;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  align-items: center;
+}
+
+.card-header {
+  background-color: inherit;
+  border: none;
+}
+
+.card-body,
+.card-footer {
+  background-color: inherit;
+  border: none;
+}
+.btn {
+  border: none;
+}
