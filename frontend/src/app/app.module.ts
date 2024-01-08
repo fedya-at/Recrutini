@@ -22,7 +22,8 @@ import { OffersComponent } from './offers/offers.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { OffreDetailsComponent } from './offre-details/offre-details.component';
-import { ListOffresComponent } from './list-offres/list-offres.component';
+import { GereOffresComponent } from './Gere-offres/Gere-offres.component';
+import { GereUsersComponent } from './gere-users/gere-users.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { ListOffresComponent } from './list-offres/list-offres.component';
     NavbarComponent,
     FooterComponent,
     OffreDetailsComponent,
-    ListOffresComponent,
+    GereOffresComponent,
+    GereUsersComponent,
   ],
   imports: [
     BrowserModule,

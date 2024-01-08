@@ -7,6 +7,7 @@ import userRoutes from "./routes/userRoute.js";
 import cors from "cors";
 import appointmentRouter from "./routes/appointmentRouter.js";
 import offreRoutes from "./routes/offreRoutes.js";
+import applicationRoutes from "./routes/applicationRoutes.js";
 const app = express();
 
 connectToDatabase();
@@ -27,6 +28,7 @@ app.get("/api/candidate/applied-jobs", (req, res) => {
 app.use("/api/users", userRoutes);
 app.use("/api/appointments", appointmentRouter);
 app.use("/api/offres", offreRoutes);
+app.use("/api/applications", applicationRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

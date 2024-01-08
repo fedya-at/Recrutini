@@ -1,0 +1,9 @@
+.btn {
+  margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .btn {
+    margin-bottom: 10px;
+  }
+}

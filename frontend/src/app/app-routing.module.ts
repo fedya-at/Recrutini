@@ -7,8 +7,8 @@ import { JobStatusComponent } from './job-status/job-status.component';
 import { PostOffreComponent } from './post-offre/post-offre.component';
 import { OffreDetailsComponent } from './offre-details/offre-details.component';
 import { OffersComponent } from './offers/offers.component';
-import { ListOffresComponent } from './list-offres/list-offres.component';
-
+import { GereOffresComponent } from './Gere-offres/Gere-offres.component';
+import { GereUsersComponent } from './gere-users/gere-users.component';
 const routes: Routes = [
   { path: 'interview', component: FilteredUsersComponent },
   { path: 'appointments', component: AppointmentsComponent },
@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'offers', component: OffersComponent },
   { path: 'create-offer', component: PostOffreComponent },
   { path: 'offer/:id', component: OffreDetailsComponent },
-  { path: 'offersList', component: ListOffresComponent },
+  { path: 'gere-offers', component: GereOffresComponent },
+  { path: 'users', component: GereUsersComponent },
 ];
 
 @NgModule({

@@ -62,7 +62,6 @@ const offersData = [
     company: "Tech Solutions",
     companyDescription: "Innovative technology solutions provider",
     employeesNeeded: 3,
-    RoleDescription: "Exciting opportunity for a skilled web developer.",
     location: "Remote",
     description:
       "Join our dynamic team and contribute to cutting-edge web development projects.",
@@ -76,12 +75,10 @@ const offersData = [
     company: "Data Insights",
     companyDescription: "Data analytics company",
     employeesNeeded: 2,
-    RoleDescription: "Analyzing and interpreting complex data sets.",
     location: "New York",
     description: "Join our data analytics team and make meaningful insights.",
     skills: ["Python", "SQL", "Data Visualization"],
     salary: 75000,
-    whatWeOffre: "Opportunity to work with cutting-edge data technologies",
     dateFin: new Date("2024-11-30"),
   },
   {
@@ -89,13 +86,11 @@ const offersData = [
     company: "Design Innovations",
     companyDescription: "Creative design agency",
     employeesNeeded: 1,
-    RoleDescription: "Creating visually appealing and user-friendly designs.",
     location: "San Francisco",
     description:
       "Bring your design skills to a collaborative and innovative environment.",
     skills: ["UI/UX", "Sketch", "Adobe XD"],
     salary: 70000,
-    whatWeOffre: "Collaborative and inspiring design projects",
     dateFin: new Date("2024-10-31"),
   },
   {
@@ -103,12 +98,10 @@ const offersData = [
     company: "CodeCrafters",
     companyDescription: "Software development company",
     employeesNeeded: 4,
-    RoleDescription: "Developing scalable and efficient software solutions.",
     location: "Austin",
     description: "Be part of a team delivering cutting-edge software products.",
     skills: ["Java", "Spring Boot", "MongoDB"],
     salary: 90000,
-    whatWeOffre: "Exciting projects in the software development space",
     dateFin: new Date("2024-09-30"),
   },
   {
@@ -116,13 +109,10 @@ const offersData = [
     company: "MarketPro",
     companyDescription: "Marketing solutions provider",
     employeesNeeded: 2,
-    RoleDescription:
-      "Developing and implementing strategic marketing initiatives.",
     location: "Chicago",
     description: "Shape the future of marketing with our innovative solutions.",
     skills: ["Digital Marketing", "SEO", "Social Media"],
     salary: 85000,
-    whatWeOffre: "Opportunity to lead impactful marketing campaigns",
     dateFin: new Date("2024-08-31"),
   },
 ];

@@ -1,4 +1,3 @@
-import { text } from "express";
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
@@ -16,10 +15,6 @@ const offreTravailSchema = new Schema({
     required: true,
   },
   employeesNeeded: Number,
-  RoleDescription: {
-    type: String,
-    required: true,
-  },
   location: String,
   description: String,
   skills: [String],
@@ -27,10 +22,6 @@ const offreTravailSchema = new Schema({
   postedAt: {
     type: Date,
     default: Date.now,
-  },
-  whatWeOffre: {
-    type: String,
-    required: true,
   },
   dateFin: {
     type: Date,

@@ -119,8 +119,12 @@ const sendCongratulationsEmail = (appointment) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
+      type: "OAuth2",
       user: "florakenz41@gmail.com",
       pass: "Flora4588",
+      clientId: process.env.OAUTH_CLIENTID,
+      clientSecret: process.env.OAUTH_CLIENT_SECRET,
+      refreshToken: process.env.OAUTH_REFRESH_TOKEN,
     },
     tls: {
       rejectUnauthorized: false, // Bypass SSL certificate verification

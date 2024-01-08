@@ -62,7 +62,7 @@
         </div>
         <div class="modal-body">
           <!-- Form inside the modal -->
-          <form>
+          <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
             <div class="form-group">
               <label for="firstname">First name:</label>
               <input
@@ -70,10 +70,11 @@
                 id="firstname"
                 name="firstname"
                 class="form-control"
-                placeholder="entrer first name"
+                placeholder="Enter first name"
                 required
               />
             </div>
+
             <div class="form-group">
               <label for="lastname">Last name:</label>
               <input
@@ -81,12 +82,13 @@
                 id="lastname"
                 name="lastname"
                 class="form-control"
-                placeholder="entrer last name"
+                placeholder="Enter last name"
                 required
               />
             </div>
+
             <div class="form-group">
-              <label for="nom">Email :</label>
+              <label for="email">Email :</label>
               <input
                 type="email"
                 id="email"
@@ -96,6 +98,7 @@
                 required
               />
             </div>
+
             <div class="form-group">
               <label for="cv">CV :</label>
               <input
@@ -106,6 +109,7 @@
                 required
               />
             </div>
+
             <div class="form-group">
               <label for="coverLetter">Cover Letter:</label>
               <textarea
@@ -115,6 +119,9 @@
                 required
               ></textarea>
             </div>
+
+            <input type="hidden" name="idOfOffre" [(ngModel)]="offerId" />
+
             <button type="submit" class="btn btn-primary">Apply Now</button>
           </form>
         </div>

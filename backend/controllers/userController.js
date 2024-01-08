@@ -24,10 +24,10 @@ const getUserById = async (req, res) => {
   }
 };
 const getUserByRole = async (req, res) => {
-  const userRole = req.params.role; 
+  const userRole = req.params.role;
 
   try {
-    const users = await User.find({ role: userRole }); 
+    const users = await User.find({ role: userRole });
     if (users.length === 0) {
       return res
         .status(404)
@@ -53,5 +53,30 @@ const deleteUserById = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+// Update user by ID
+const updateUserById = async (req, res) => {
+  const userId = req.params.id;
+  const updateData = req.body;
 
-export { getAllUsers, getUserById, getUserByRole, deleteUserById };
+  try {
+    const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
+      new: true,
+    });
+
+    if (!updatedUser) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.status(200).json(updatedUser);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+export {
+  getAllUsers,
+  getUserById,
+  getUserByRole,
+  deleteUserById,
+  updateUserById,
+};
