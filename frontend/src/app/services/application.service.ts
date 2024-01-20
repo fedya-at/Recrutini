@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class ApplicationService {
   private baseUrl = 'http://localhost:3000/api/applications';
+  private uploadurl = 'http://localhost:3000/api/upload';
 
   constructor(private http: HttpClient) {}
 
@@ -18,15 +19,18 @@ export class ApplicationService {
     return this.http.get<any>(`${this.baseUrl}/${applicationId}`);
   }
 
-  createAppointment(applicationData: any): Observable<any> {
+  createApplication(applicationData: any): Observable<any> {
     return this.http.post<any>(this.baseUrl, applicationData);
   }
 
-  updateApplication(id: string, application: any): Observable<any[]> {
-    return this.http.put<any[]>(`${this.baseUrl}/${id}`, application);
+  updateApplication(id: string, application: any): Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/${id}`, application);
   }
 
   deleteApplication(id: string): Observable<any[]> {
     return this.http.delete<any[]>(`${this.baseUrl}/${id}`);
+  }
+  uploadFile(formData: FormData): Observable<any> {
+    return this.http.post(`${this.uploadurl}`, formData);
   }
 }

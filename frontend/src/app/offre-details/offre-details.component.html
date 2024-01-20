@@ -1,130 +1,168 @@
-<div class="job-listing">
-  <h2 class="job-title">{{ title }}</h2>
-  <div class="job-location">
-    <h3 class="company-location">{{ location }}</h3>
+<div class="container-fluid">
+  <div class="row">
+    <div class="job col-md-6 ml-2">
+      <h1 class="title">{{ title }}</h1>
+      <ul class="list-unstyled mt-2">
+        <li><i class="fa-solid fa-location-dot"></i> {{ location }}</li>
+        <li><i class="fa-solid fa-building"></i> {{ company }}</li>
+        <li><i class="fa-solid fa-sack-dollar"></i> year / {{ salary }} $</li>
+        <li><i class="fa-solid fa-hourglass-start"></i> {{ dateFin }}</li>
+      </ul>
+      <button
+        class="btn btn-outline-dark"
+        data-bs-toggle="modal"
+        data-bs-target="#myModal"
+      >
+        Apply
+      </button>
+    </div>
+    <div class="col-md-6">
+      <img
+        src="../../assets/Jonas Mosesson.gif"
+        alt="Job Image"
+        class="img-fluid"
+      />
+    </div>
   </div>
-  <ul class="job-requirements">
-    <li class="skills">
-      <i class="fas fa-tools"></i> Skills: {{ skills.join(", ") }}
-    </li>
-  </ul>
-  <h4>About The Job</h4>
-  <div class="job-company">
-    <p class="company-name">{{ company }}</p>
+</div>
+
+<div class="description">
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="fw-bold">Company Description</h2>
+        <p>
+          {{ companyDescription }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <h2 class="fw-bold">Job Description</h2>
+        <p>
+          {{ description }}
+        </p>
+      </div>
+    </div>
+
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <h2 class="fw-bold">Skills Needed</h2>
+        <ul *ngFor="let skill of skills">
+          <li><i class="fa-regular fa-circle"></i> {{ skill }}</li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="job-details">
-    <p class="role-description">{{ roleDescription }}</p>
-    <ul class="job-info">
-      <li class="location">
-        <i class="fas fa-map-marker-alt"></i> {{ location }}
-      </li>
-      <li class="salary"><i class="fas fa-dollar-sign"></i> {{ salary }}</li>
-    </ul>
-  </div>
-  <h4>Description</h4>
-  <p class="job-description">{{ description }}</p>
+</div>
 
-  <h4>What we Offre</h4>
-  <p class="what-we-offer">{{ whatWeOffer }}</p>
+<!-- The Modal -->
+<div class="modal fade" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Apply for {{ title }}</h4>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+        ></button>
+      </div>
 
-  <p class="date-fin"></p>
-  <button
-    type="button"
-    class="btn btn-primary"
-    data-bs-toggle="modal"
-    data-bs-target="#exampleModal"
-  >
-    Apply Now
-  </button>
+      <!-- Modal body -->
+      <div class="modal-body">
+        <!-- Form inside the modal -->
+        <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+          <div class="form-group">
+            <label for="firstname">First name:</label>
+            <input
+              type="text"
+              id="firstname"
+              name="firstName"
+              [(ngModel)]="myForm.value.firstName"
+              class="form-control"
+              placeholder="Enter first name"
+              required
+            />
+          </div>
 
-  <!-- Bootstrap Modal -->
-  <div
-    class="modal fade"
-    id="exampleModal"
-    tabindex="-1"
-    aria-labelledby="exampleModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="applyModalLabel">
-            Apply for {{ title }}
-          </h5>
-          <button
-            type="button"
-            class="close"
-            data-dismiss="modal"
-            aria-label="Close"
-          >
-            <span aria-hidden="true">&times;</span>
+          <div class="form-group">
+            <label for="lastname">Last name:</label>
+            <input
+              type="text"
+              id="lastname"
+              name="lastName"
+              [(ngModel)]="myForm.value.lastName"
+              class="form-control"
+              placeholder="Enter last name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email :</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              [(ngModel)]="myForm.value.email"
+              class="form-control"
+              placeholder="name@gmail.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone :</label>
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              [(ngModel)]="myForm.value.phone"
+              class="form-control"
+              placeholder="+216025604562"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="cv">CV : </label>
+            <input
+              type="file"
+              id="cv"
+              name="CV"
+              class="form-control"
+              required
+              (change)="uploadFileHandler($event)"
+            />
+          </div>
+          <div class="form-group">
+            <label for="coverLetter">Cover Letter:</label>
+            <textarea
+              id="coverLetter"
+              name="CoverLettre"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+
+          <input
+            type="hidden"
+            class="mb-2"
+            name="idOfOffre"
+            [(ngModel)]="offerId"
+          />
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+            submit
           </button>
-        </div>
-        <div class="modal-body">
-          <!-- Form inside the modal -->
-          <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
-            <div class="form-group">
-              <label for="firstname">First name:</label>
-              <input
-                type="text"
-                id="firstname"
-                name="firstname"
-                class="form-control"
-                placeholder="Enter first name"
-                required
-              />
-            </div>
+        </form>
+      </div>
 
-            <div class="form-group">
-              <label for="lastname">Last name:</label>
-              <input
-                type="text"
-                id="lastname"
-                name="lastname"
-                class="form-control"
-                placeholder="Enter last name"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email :</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="form-control"
-                placeholder="name@gmail.com"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="cv">CV :</label>
-              <input
-                type="file"
-                id="cv"
-                name="cv"
-                class="form-control"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="coverLetter">Cover Letter:</label>
-              <textarea
-                id="coverLetter"
-                name="coverLetter"
-                class="form-control"
-                required
-              ></textarea>
-            </div>
-
-            <input type="hidden" name="idOfOffre" [(ngModel)]="offerId" />
-
-            <button type="submit" class="btn btn-primary">Apply Now</button>
-          </form>
-        </div>
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+          Close
+        </button>
       </div>
     </div>
   </div>

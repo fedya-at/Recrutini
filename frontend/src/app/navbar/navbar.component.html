@@ -1,16 +1,50 @@
-<!-- navbar.component.html -->
-<div class="Navbar">
-  <div class="logo">Recrutini</div>
-  <div class="nav-items" [ngClass]="{ show: navbarVisible }" #navItems>
-    <ul>
-      <li>Offres</li>
-      <li>Companies</li>
-      <li>Resumes</li>
-    </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent">
+  <div class="container-fluid">
+    <!-- Logo on the left -->
+    <a class="navbar-brand" href="/">Recrutini</a>
+
+    <!-- Toggler button for mobile view -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navigation items centered -->
+    <div
+      class="collapse navbar-collapse justify-content-center"
+      id="navbarSupportedContent"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item ms-auto">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item ms-auto">
+          <a class="nav-link" href="/offers">Companies</a>
+        </li>
+        <li class="nav-item ms-auto">
+          <a class="nav-link" href="#">Resumes</a>
+        </li>
+        <!-- Login button inside collapsed navbar on small screens -->
+        <li class="nav-item d-lg-none ms-auto">
+          <button class="btn btn-secondary">
+            <a class="login" href="/login">Login</a>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Login button on the right for larger screens -->
+    <div class="text-end d-none d-lg-block">
+      <button class="btn btn-secondary">
+        <a class="login" href="/login">Login</a>
+      </button>
+    </div>
   </div>
-  <div class="buttons">
-    <button class="btnLogin">Login</button>
-    <button class="btnSignup">Sign Up</button>
-  </div>
-  <button class="toggleButton" (click)="toggleNavbar()">&#9776;</button>
-</div>
+</nav>

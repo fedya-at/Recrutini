@@ -5,11 +5,13 @@ import {
   getUserByRole,
   deleteUserById,
   updateUserById,
+  createUser,
+  getUserByLogin,
 } from "../controllers/userController.js";
 
 const router = express.Router();
 
-router.route("/").get(getAllUsers);
+router.route("/").get(getAllUsers).post(createUser);
 
 router
   .route("/:id")
@@ -18,5 +20,6 @@ router
   .put(updateUserById);
 
 router.route("/role/:role").get(getUserByRole);
+router.route("/login").post(getUserByLogin);
 
 export default router;

@@ -13,8 +13,12 @@ const Applicationschema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  phone:{
+    type: String,
+    required: true,
+  },
   CV: {
-    type: Buffer,
+    type: String,
     required: true,
   },
   CoverLettre: {
@@ -24,6 +28,11 @@ const Applicationschema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Offre",
     required: true,
+  },
+  etat:{
+    type: String,
+    enum: ["unseen", "seen", "approved","refused"],
+    default: "unseen",
   },
 });
 

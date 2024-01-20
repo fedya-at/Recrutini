@@ -24,6 +24,8 @@ import { FooterComponent } from './footer/footer.component';
 import { OffreDetailsComponent } from './offre-details/offre-details.component';
 import { GereOffresComponent } from './Gere-offres/Gere-offres.component';
 import { GereUsersComponent } from './gere-users/gere-users.component';
+import { AuthentificationComponent } from './authentification/authentification.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { GereUsersComponent } from './gere-users/gere-users.component';
     OffreDetailsComponent,
     GereOffresComponent,
     GereUsersComponent,
+    AuthentificationComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,

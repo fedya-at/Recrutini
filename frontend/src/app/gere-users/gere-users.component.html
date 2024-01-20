@@ -58,22 +58,87 @@
                 </div>
                 <div class="modal-body">
                   <!-- Form inside the modal -->
-                  <form #myForm="ngForm">
+                  <form (ngSubmit)="onEditSubmit()" #myForm="ngForm">
                     <div class="form-group">
                       <label for="firstname">First name:</label>
                       <input
                         type="text"
                         id="firstname"
+                        readonly
                         name="firstname"
                         class="form-control"
-                        placeholder="Enter first name"
                         [(ngModel)]="editedUser.firstName"
                         required
                       />
                     </div>
+                    <div class="form-group">
+                      <label for="lastname">Last name:</label>
+                      <input
+                        type="text"
+                        id="lastname"
+                        readonly
+                        name="lastname"
+                        class="form-control"
+                        [(ngModel)]="editedUser.lastName"
+                        required
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input
+                        type="text"
+                        id="email"
+                        readonly
+                        name="email"
+                        class="form-control"
+                        [(ngModel)]="editedUser.email"
+                        required
+                      />
+                    </div>
+
+                    <div class="form-group">
+                      <label>Role:</label>
+                      <div class="form-check">
+                        <input
+                          type="radio"
+                          id="adminRadio"
+                          name="roleRadio"
+                          class="form-check-input"
+                          value="admin"
+                          [(ngModel)]="editedUser.role"
+                        />
+                        <label for="adminRadio" class="form-check-label"
+                          >Admin</label
+                        >
+                      </div>
+                      <div class="form-check">
+                        <input
+                          type="radio"
+                          id="hrRadio"
+                          name="roleRadio"
+                          class="form-check-input"
+                          value="hr"
+                          [(ngModel)]="editedUser.role"
+                        />
+                        <label for="hrRadio" class="form-check-label">HR</label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          type="radio"
+                          id="candidatRadio"
+                          name="roleRadio"
+                          class="form-check-input"
+                          value="candidat"
+                          [(ngModel)]="editedUser.role"
+                        />
+                        <label for="candidatRadio" class="form-check-label"
+                          >Candidate</label
+                        >
+                      </div>
+                    </div>
 
                     <button type="submit" class="btn btn-primary">
-                      Apply Now
+                      Update
                     </button>
                   </form>
                 </div>

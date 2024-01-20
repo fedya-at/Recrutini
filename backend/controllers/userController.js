@@ -73,10 +73,55 @@ const updateUserById = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+const getUserByLogin = async (req, res) => {
+  const email = req.params.email;
+  console.log("Username:", email);
+  const password = req.params.password;
+  console.log("Username:", password);
+
+  try {
+    const user = await User.find({ email: email, password: password });
+
+    if (user.length === 0) {
+      return res
+        .status(404)
+        .json({ error: "Users with the specified role not found" });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+const createUser = async (req, res) => {
+  const { username, firstname, lastname, email, password, role } = req.body;
+
+  try {
+    const newUser = new User({
+      username,
+      firstname,
+      lastname,
+      email,
+      password,
+      role,
+    });
+
+    const savedUser = await newUser.save();
+
+    res.status(201).json(savedUser);
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 export {
   getAllUsers,
   getUserById,
   getUserByRole,
   deleteUserById,
   updateUserById,
+  getUserByLogin,
+  createUser,
 };

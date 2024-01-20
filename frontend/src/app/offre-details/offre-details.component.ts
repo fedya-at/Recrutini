@@ -12,18 +12,22 @@ import { CommunService, toastPayload } from '../services/commun.service';
   styleUrls: ['./offre-details.component.css'],
 })
 export class OffreDetailsComponent implements OnInit {
-  offerId: string = '';
+  //Offre properties
+
+  offerId: any;
   title: string = '';
   company: string = '';
-  roleDescription: string = '';
+  companyDescription: string = '';
   location: string = '';
   salary: number = 0;
   skills: string[] = [];
   description: string = '';
-  whatWeOffer: string = '';
   dateFin: Date = new Date();
 
-  coverLetter: string = '';
+  //application properties
+
+  CV: string = '';
+
   myForm!: NgForm;
 
   toast!: toastPayload;
@@ -48,47 +52,67 @@ export class OffreDetailsComponent implements OnInit {
         this.offerId = offer._id;
         this.title = offer.title;
         this.company = offer.company;
-        this.roleDescription = offer.roleDescription;
+        this.companyDescription = offer.companyDescription;
         this.location = offer.location;
         this.salary = offer.salary;
         this.skills = offer.skills;
         this.description = offer.description;
-        this.whatWeOffer = offer.whatWeOffre;
         this.dateFin = offer.dateFin;
       },
       (error) => {
-        console.error('Error loading offer details:', error);
+        this.showToast('error', 'Faild To Load offers ');
       }
     );
   }
-  onSubmit(form: NgForm) {
-    const applicationData = {
-      idOfOffre: this.offerId,
-      firstName: form.value.firstname,
-      lastName: form.value.lastname,
-      email: form.value.email,
-      CV: form.value.cv,
-      CoverLettre: form.value.coverLetter,
-    };
 
-    if (!applicationData.idOfOffre) {
-      this.showToast('error', `Invalid offerId: ${this.offerId}`);
-      return;
-    }
+  uploadFileHandler(event: any): void {
+    const file = event.target.files[0];
+    const formData = new FormData();
+    formData.append('cv', file);
 
-    this.as.createAppointment(applicationData).subscribe(
-      (response) => {
-        this.showToast('success', 'Application submitted successfully!');
-        form.resetForm();
+    this.as.uploadFile(formData).subscribe(
+      (data: { filePath: string }) => {
+        this.CV = data.filePath;
+        this.showToast('success', 'CV uploaded successfully!');
       },
       (error) => {
-        this.showToast(
-          'error',
-          'Failed to submit application. Please try again.'
-        );
-        console.error(error);
+        console.error('Error uploading CV:', error);
+        this.showToast('error', 'Failed to upload CV');
       }
     );
+  }
+
+  private createApplicationData(form: NgForm): any {
+    return {
+      firstName: form.value.firstName, // Update to match your form field names
+      lastName: form.value.lastName, // Update to match your form field names
+      email: form.value.email,
+      phone: form.value.phone,
+      CV: this.CV,
+      CoverLettre: form.value.CoverLettre, // Update to match your form field names
+      idOfOffre: form.value.idOfOffre,
+      etat: 'unseen',
+    };
+  }
+
+  private apply(applicationData: any): void {
+    this.as.createApplication(applicationData).subscribe(
+      (data) => {
+        this.showToast('success', 'Application sent successfully!');
+      },
+      (error) => {
+        this.showToast('error', 'Failed to send application');
+      }
+    );
+  }
+
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      const applicationData = this.createApplicationData(form);
+      this.apply(applicationData);
+    } else {
+      this.showToast('error', 'Failed to send application');
+    }
   }
 
   showToast(type: string, message: string) {

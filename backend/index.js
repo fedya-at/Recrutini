@@ -8,6 +8,9 @@ import cors from "cors";
 import appointmentRouter from "./routes/appointmentRouter.js";
 import offreRoutes from "./routes/offreRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
+import uploadRoutes from "./routes/uploadRoutes.js";
+
+
 const app = express();
 
 connectToDatabase();
@@ -29,6 +32,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/appointments", appointmentRouter);
 app.use("/api/offres", offreRoutes);
 app.use("/api/applications", applicationRoutes);
+app.use("/api/upload", uploadRoutes);
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

@@ -1,6 +1,4 @@
 import Application from "../models/applicationModel.js";
-import multer from "multer";
-import path from "path";
 
 export const getAllApplications = async (req, res) => {
   try {
@@ -26,44 +24,36 @@ export const getApplicationById = async (req, res) => {
   }
 };
 
-const storage = multer.memoryStorage();
-
-const fileFilter = (req, file, cb) => {
-  if (file.mimetype === "application/pdf") {
-    cb(null, true);
-  } else {
-    cb(new Error("Invalid file type. Only PDF files are allowed."), false);
-  }
-};
-
-const upload = multer({ storage, fileFilter });
-
 export const createApplication = async (req, res) => {
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    CV,
+    CoverLettre,
+    idOfOffre,
+    etat,
+  } = req.body;
+
   try {
-    const { firstName, lastName, email, CoverLetter, idOfOffre } = req.body;
-    console.log(req.body);
-
-    // Use multer middleware to handle the file upload
-    upload.single("CV")(req, res, async (err) => {
-      if (err) {
-        return res.status(400).json({ error: err.message });
-      }
-
-      const cvBuffer = req.file ? req.file.buffer : undefined;
-
-      const newApplication = new Application({
-        firstName,
-        lastName,
-        email,
-        CV: cvBuffer,
-        CoverLetter,
-        idOfOffre,
-      });
-
-      const savedApplication = await newApplication.save();
-
-      res.status(201).json(savedApplication);
+    if (!firstName || !lastName || !email || !phone) {
+      return res.status(400).json({ error: "Missing required fields" });
+    }
+    const application = new Application({
+      firstName,
+      lastName,
+      email,
+      phone,
+      CV,
+      CoverLettre,
+      idOfOffre,
+      etat,
     });
+
+    const savedApplication = await application.save();
+
+    res.status(201).json(savedApplication);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
@@ -72,7 +62,7 @@ export const createApplication = async (req, res) => {
 
 export const updateApplicationById = async (req, res) => {
   const applicationId = req.params.id;
-  const { firstname, lastname, email, CV, CoverLettre } = req.body;
+  const { firstname, lastname, email, phone, CV, CoverLettre, etat } = req.body;
   try {
     const updatedApplication = await Application.findByIdAndUpdate(
       applicationId,
@@ -80,8 +70,10 @@ export const updateApplicationById = async (req, res) => {
         firstName: firstname,
         lastName: lastname,
         email: email,
+        phone: phone,
         CV: CV,
-        CoverLetter: CoverLettre,
+        CoverLettre: CoverLettre,
+        etat: etat,
       },
       { new: true }
     );
