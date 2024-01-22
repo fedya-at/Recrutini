@@ -54,7 +54,6 @@ export class UserService {
   }
   isAuthenticated(): Observable<boolean> {
     const token = localStorage.getItem('token');
-    console.log('Token before request:', token);
 
     const headers = this.setHeaders();
 

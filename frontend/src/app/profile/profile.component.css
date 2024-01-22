@@ -15,7 +15,6 @@
   top: 0;
   width: 4px;
   height: 100%;
-  background-color: #e1bee7;
   transform: scaleY(1);
   transition: all 0.5s;
   transform-origin: bottom;
@@ -68,4 +67,15 @@
 }
 hr {
   transform: rotate(90deg);
+}
+
+.applications {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+}
+.card-header {
+  color: white;
 }

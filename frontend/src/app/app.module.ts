@@ -28,6 +28,7 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { HRdashboardComponent } from './hrdashboard/hrdashboard.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
     LandingPageComponent,
     ProfileComponent,
     AdmindashboardComponent,
+    HRdashboardComponent,
   ],
   imports: [
     BrowserModule,

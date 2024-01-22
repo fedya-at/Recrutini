@@ -13,29 +13,36 @@ export class AdmindashboardComponent implements OnInit {
   showUsers: boolean = true;
   showOffers: boolean = false;
 
+  pageSize: number = 4;
   usersPage: number = 1;
-  usersPageSize: number = 4;
-
   offersPage: number = 1;
-  offersPageSize: number = 4;
 
   constructor(
     private userService: UserService,
     private offreService: OffreService
   ) {}
 
+  ngOnInit(): void {
+    // Fetch users on component initialization
+    this.fetchUsers();
+    this.fetchOffers();
+  }
+
   showUsersSection(): void {
     this.showUsers = true;
     this.showOffers = false;
+    this.usersPage = 1; // Reset page number when switching sections
+    this.fetchUsers();
   }
 
   showOffersSection(): void {
     this.showUsers = false;
     this.showOffers = true;
+    this.offersPage = 1; // Reset page number when switching sections
+    this.fetchOffers();
   }
 
-  ngOnInit(): void {
-    // Fetch users on component initialization
+  fetchUsers(): void {
     this.userService.getAllUsers().subscribe(
       (data) => {
         this.users = data;
@@ -44,8 +51,9 @@ export class AdmindashboardComponent implements OnInit {
         console.error('Error fetching users:', error);
       }
     );
+  }
 
-    // Fetch offers on component initialization
+  fetchOffers(): void {
     this.offreService.getAllOffers().subscribe(
       (data) => {
         this.offers = data;
@@ -54,6 +62,31 @@ export class AdmindashboardComponent implements OnInit {
         console.error('Error fetching offers:', error);
       }
     );
+  }
+
+  getPaginatedUsers(): any[] {
+    const startIndex = (this.usersPage - 1) * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.users.length);
+    return this.users.slice(startIndex, endIndex);
+  }
+  getPaginatedOffers(): any[] {
+    const startIndex = (this.offersPage - 1) * this.pageSize;
+    return this.offers.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  onPageChangeUsers(page: number): void {
+    this.usersPage = page;
+    this.fetchUsers();
+  }
+
+  onPageChangeOffers(page: number): void {
+    this.offersPage = page;
+    this.fetchOffers();
+  }
+
+  getUsersPaginationArray(): number[] {
+    const pageCount = Math.ceil(this.users.length / this.pageSize);
+    return Array.from({ length: pageCount }, (_, index) => index + 1);
   }
 
   // Edit user method

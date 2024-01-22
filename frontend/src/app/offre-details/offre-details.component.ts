@@ -5,6 +5,7 @@ import { ApplicationService } from '../services/application.service';
 import { NgForm } from '@angular/forms';
 import { IndividualConfig } from 'ngx-toastr';
 import { CommunService, toastPayload } from '../services/commun.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-offre-details',
@@ -84,7 +85,7 @@ export class OffreDetailsComponent implements OnInit {
 
   private createApplicationData(form: NgForm): any {
     return {
-      firstName: form.value.firstName, // Update to match your form field names
+      firstName: form.value.firstName, 
       lastName: form.value.lastName, // Update to match your form field names
       email: form.value.email,
       phone: form.value.phone,

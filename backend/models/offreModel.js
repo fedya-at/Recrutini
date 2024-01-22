@@ -27,6 +27,11 @@ const offreTravailSchema = new Schema({
     type: Date,
     required: true,
   },
+  Postedby: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
 });
 
 const Offre = mongoose.model("OffreTravail", offreTravailSchema);

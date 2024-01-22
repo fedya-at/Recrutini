@@ -14,6 +14,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { HRdashboardComponent } from './hrdashboard/hrdashboard.component';
 
 const routes: Routes = [
   {
@@ -53,6 +54,12 @@ const routes: Routes = [
     component: AdmindashboardComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path: 'HrDashboard',
+    component: HRdashboardComponent,
+    canActivate: [AuthGuard],
+  },
+
 ];
 
 @NgModule({

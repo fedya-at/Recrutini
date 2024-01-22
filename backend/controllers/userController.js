@@ -68,6 +68,7 @@ const updateUserById = async (req, res) => {
       new: true,
     });
 
+    
     if (!updatedUser) {
       return res.status(404).json({ error: "User not found" });
     }
@@ -140,7 +141,6 @@ export const isAuthenticated = (req, res) => {
       req.cookies.token;
 
     const token = tokenObject ? tokenObject : null;
-    console.log("Received Token:", token);
 
     if (!token) {
       return res.status(401).json({ isAuthenticated: false });
@@ -150,7 +150,6 @@ export const isAuthenticated = (req, res) => {
       token,
       process.env.SECRET_KEY || "defaultSecretKey",
       (err, decodedToken) => {
-        console.log("Decoded Token:", decodedToken);
 
         if (err) {
           console.error("JWT error", err);
@@ -159,7 +158,6 @@ export const isAuthenticated = (req, res) => {
         res.status(200).json({ isAuthenticated: true });
       }
     );
-    console.log("isAuthenticated route accessed");
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });

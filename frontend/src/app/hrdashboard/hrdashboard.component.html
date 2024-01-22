@@ -1,0 +1,9 @@
+<div *ngIf="offer">
+  <h2>{{ offer.title }}</h2>
+</div>
+<div *ngFor="let application of applications">
+  <p>
+    {{ application.firstName }} {{ application.lastName }} -
+    {{ application.email }} - {{ application.etat }}
+  </p>
+</div>

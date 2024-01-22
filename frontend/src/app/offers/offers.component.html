@@ -1,12 +1,14 @@
-<h1>Job offers:</h1>
 <div class="container">
-  <div *ngFor="let offer of jobOffers" class="card">
-    <h1 class="title">
-      <a [routerLink]="['/offer', offer._id]">{{ offer.title }}</a>
-    </h1>
-    <p class="company">{{ offer.company }}</p>
-    <p class="location">{{ offer.location }}</p>
-    <p class="description">{{ offer.description }}</p>
-    <p class="dateFin">Deadline: {{ offer.dateFin | date : "mediumDate" }}</p>
+  <h1>Job offers:</h1>
+  <div class="container">
+    <div *ngFor="let offer of jobOffers" class="card">
+      <h1 class="title">
+        <a [routerLink]="['/offer', offer._id]">{{ offer.title }}</a>
+      </h1>
+      <p class="company">{{ offer.company }}</p>
+      <p class="location">{{ offer.location }}</p>
+      <p class="description">{{ offer.description }}</p>
+      <p class="dateFin">Deadline: {{ offer.dateFin | date : "mediumDate" }}</p>
+    </div>
   </div>
 </div>

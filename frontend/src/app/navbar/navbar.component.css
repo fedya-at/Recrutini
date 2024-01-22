@@ -24,3 +24,9 @@ button a:hover {
   text-decoration: none;
   color: black;
 }
+@media screen and (max-width: 768px) {
+.navbar{
+  background-color: white;
+}
+  
+}

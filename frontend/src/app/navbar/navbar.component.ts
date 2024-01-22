@@ -27,7 +27,6 @@ export class NavbarComponent implements OnInit {
     this.us.isAuthenticated().subscribe((isAuthenticated) => {
       this.isLoggedIn = isAuthenticated;
       if (isAuthenticated) {
-        // If the user is authenticated, fetch the user information
         this.us.getUserInfo().subscribe((user) => {
           this.user = user;
           this.userRole = user.role;

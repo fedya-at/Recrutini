@@ -13,7 +13,7 @@ const Applicationschema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  phone:{
+  phone: {
     type: String,
     required: true,
   },
@@ -29,9 +29,14 @@ const Applicationschema = new mongoose.Schema({
     ref: "Offre",
     required: true,
   },
-  etat:{
+  idUser: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  etat: {
     type: String,
-    enum: ["unseen", "seen", "approved","refused"],
+    enum: ["unseen", "seen", "approved", "refused"],
     default: "unseen",
   },
 });

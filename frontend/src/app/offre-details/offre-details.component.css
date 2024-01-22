@@ -30,8 +30,6 @@ li {
   margin-bottom: 50px !important;
 }
 
-
-
 @media (max-width: 768px) {
   .container-fluid {
     flex-direction: column;
@@ -46,3 +44,4 @@ li {
     justify-content: space-around;
   }
 }
+

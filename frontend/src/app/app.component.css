@@ -7,9 +7,9 @@ header {
   padding: 10px;
 }
 
-router-outlet {
-  flex: 1;
-  padding: 20px;
+.body {
+  margin-top: 8%;
+  margin-bottom: 12%;
 }
 
 footer {

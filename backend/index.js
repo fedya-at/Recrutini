@@ -10,7 +10,6 @@ import offreRoutes from "./routes/offreRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
-
 const app = express();
 
 connectToDatabase();
@@ -18,12 +17,6 @@ connectToDatabase();
 app.use(cors());
 
 app.use(bodyParser.json());
-
-const candidateAppliedJobs = [
-  { id: 1, title: "Job A", status: "Not Seen" },
-  { id: 2, title: "Job B", status: "Reviewing" },
-  { id: 3, title: "Job C", status: "Accepted" },
-];
 
 app.get("/api/candidate/applied-jobs", (req, res) => {
   res.json(candidateAppliedJobs);
@@ -33,6 +26,11 @@ app.use("/api/appointments", appointmentRouter);
 app.use("/api/offres", offreRoutes);
 app.use("/api/applications", applicationRoutes);
 app.use("/api/upload", uploadRoutes);
+
+// Move this wildcard route to the end
+app.get("*", (req, res) => {
+  res.status(404).json({ error: "Not Found" });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {

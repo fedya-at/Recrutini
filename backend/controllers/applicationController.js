@@ -24,6 +24,17 @@ export const getApplicationById = async (req, res) => {
   }
 };
 
+export const getApplicationsByUserId = async (req, res) => {
+  const userId = req.params.userId; // Assuming the route parameter is named userId
+  try {
+    const applications = await Application.find({ idUser: userId });
+    res.status(200).json(applications);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 export const createApplication = async (req, res) => {
   const {
     firstName,
@@ -33,6 +44,7 @@ export const createApplication = async (req, res) => {
     CV,
     CoverLettre,
     idOfOffre,
+    idUser,
     etat,
   } = req.body;
 
@@ -48,6 +60,7 @@ export const createApplication = async (req, res) => {
       CV,
       CoverLettre,
       idOfOffre,
+      idUser,
       etat,
     });
 
@@ -62,7 +75,8 @@ export const createApplication = async (req, res) => {
 
 export const updateApplicationById = async (req, res) => {
   const applicationId = req.params.id;
-  const { firstname, lastname, email, phone, CV, CoverLettre, etat } = req.body;
+  const { firstname, lastname, email, phone, CV, CoverLettre, idUser, etat } =
+    req.body;
   try {
     const updatedApplication = await Application.findByIdAndUpdate(
       applicationId,
@@ -73,6 +87,7 @@ export const updateApplicationById = async (req, res) => {
         phone: phone,
         CV: CV,
         CoverLettre: CoverLettre,
+        idUser: idUser,
         etat: etat,
       },
       { new: true }
@@ -106,3 +121,39 @@ export const deleteApplicationById = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+export const getApplicationByOffreId = async (req, res) => {
+  const offerId = req.params.offerId;
+
+  try {
+    // Find the offer
+    const offer = await Offre.findById(offerId);
+
+    if (!offer) {
+      return res.status(404).json({ error: "Offer not found" });
+    }
+
+    // Find applications for the offer
+    const applications = await Application.find({ idOfOffre: offerId }).populate("idUser");
+
+    // Extract relevant user information from applications
+    const applicantsInfo = applications.map((application) => ({
+      firstName: application.firstName,
+      lastName: application.lastName,
+      email: application.email,
+      phone: application.phone,
+      CV: application.CV,
+      CoverLettre: application.CoverLettre,
+      etat: application.etat,
+      user: {
+        _id: application.idUser._id,
+        // Include other user information as needed
+      },
+    }));
+
+    res.status(200).json({ offer, applicants: applicantsInfo });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}
