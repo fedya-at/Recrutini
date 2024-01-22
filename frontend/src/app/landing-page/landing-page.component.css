@@ -1,37 +1,321 @@
-.carousel {
+.landing {
+  margin-top: auto;
+}
+section {
+  height: 70vh;
+}
+
+#Header {
+  background-color: #f8e1cb;
+  padding: 5rem 0;
+}
+
+#Header .content {
+  max-width: 70rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 8rem;
+}
+
+#Header .title {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#Header .title h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+#Header .title p {
+  color: #696c6f;
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+#Header .title button {
+  max-width: fit-content;
+}
+#Header .image {
+  right: 0;
+  bottom: 0;
+}
+
+#Header .image img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.company-logo-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.company-logo-list {
+  display: flex;
+  animation: loopAnimation 10s linear infinite; /* Adjust the duration (10s) as needed */
+}
+
+.company-logo {
+  max-width: 20%;
+  height: auto;
+  margin-right: 20px; /* Adjust the spacing between logos */
+}
+
+@keyframes loopAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+#collaborators {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+#services {
+  padding-top: 4rem;
+  height: 100vh;
+  background-color: #f0f0f0;
+  animation: slideInUp;
+  animation-duration: 2s;
+}
+#services .container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#services h2,
+#services p {
   text-align: center;
-  display: block;
-  font-size: 6vmin;
 }
-.carousel .page {
-  position: absolute;
-  top: 2em;
-  left: 0;
+
+#services .container .elements {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+#services .container .elements .service {
+  text-align: center;
+  max-width: 300px;
+}
+
+#services .container .elements p {
+  font-size: 14px; /* Adjust the font size of the paragraphs */
+}
+
+#services .container .elements img {
+  max-width: 100%;
+}
+
+#team {
+  height: auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+#team .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#team .team-members {
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* Display 3 items per row by default */
+  gap: 20px;
+}
+#team .team-members .member {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+#opinions {
+  margin-top: 5rem;
+  background-color: #383f50;
+  height: auto;
+  padding: 5rem;
+}
+#opinions .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+#opinions .container h2 {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: bold;
+}
+#opinions .container p {
+  color: #fff;
+  font-size: 1rem;
+}
+
+#opinions .container .testemonials {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+figure.snip1390 {
+  position: relative;
+  overflow: hidden;
+  margin: 10px;
+  min-width: 230px;
+  max-width: 315px;
   width: 100%;
-  transition: transform 0.5s;
-  transform: scale(0);
+  color: #000000;
+  text-align: center;
+  font-size: 16px;
+  padding: 30px;
+  backdrop-filter: blur(8px) saturate(92%);
+  -webkit-backdrop-filter: blur(8px) saturate(92%);
+  background-color: rgba(255, 255, 255, 0.59);
+  border-radius: 12px;
+  border: 1px solid rgba(209, 213, 219, 0.3);
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-.carousel .page div {
-  padding: 3em;
+figure.snip1390 *,
+figure.snip1390 *:before,
+figure.snip1390 *:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
 }
-.carousel .page label {
-  cursor: pointer;
-  background: #d9ff4f;
-  padding: 1em 2em;
+figure.snip1390 figcaption {
+  width: 100%;
 }
-.carousel #page1cb:checked ~ #page1 {
-  transform: scale(1);
+figure.snip1390 h2,
+figure.snip1390 h4,
+figure.snip1390 blockquote {
+  margin: 0;
 }
-.carousel #page2cb:checked ~ #page2 {
-  transform: scale(1);
+figure.snip1390 h2,
+figure.snip1390 h4 {
+  font-weight: 300;
 }
-.carousel #page3cb:checked ~ #page3 {
-  transform: scale(1);
+figure.snip1390 h2 {
+  color: #0000;
 }
-.carousel #page4cb:checked ~ #page4 {
-  transform: scale(1);
+figure.snip1390 h4 {
+  color: #000;
 }
-.carousel #page5cb:checked ~ #page5 {
-  transform: scale(1);
+figure.snip1390 blockquote {
+  font-size: 1em;
+  padding: 45px 20px 40px 50px;
+  margin-top: 30px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: inset -1.4px -1.4px 2px rgba(0, 0, 0, 0.3);
+  text-align: left;
+  position: relative;
+}
+figure.snip1390 blockquote:before {
+  font-family: "FontAwesome";
+  content: "\201C";
+  position: absolute;
+  font-size: 70px;
+  opacity: 0.25;
+  font-style: normal;
+  top: 0px;
+  left: 20px;
+}
+figure.snip1390 .profile {
+  width: 100px;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.4);
+  margin-bottom: 10px;
+  border: solid 5px #a6a57a;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  #Header {
+    padding: 2rem 0;
+  }
+  #Header .content {
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  #Header .title {
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 6px;
+  }
+  #Header .title h1 {
+    font-size: 25px; /* Adjust font size for smaller screens */
+  }
+
+  #Header .title p {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+
+  #Header .title button {
+    max-width: 50%; /* Make button take full width on smaller screens */
+  }
+
+  .company-logo {
+    max-width: 30%; /* Adjust the size of company logos on smaller screens */
+  }
+  #collaborators {
+    margin-top: 5rem;
+  }
+  #collaborators h2 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+  #services {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+  }
+  #services .container .elements .service {
+    max-width: 50%; /* Make services take full width on smaller screens */
+  }
+  #services .container .elements .service h2 {
+    font-size: 70%;
+    width: 30%;
+  }
+  #services .container .elements .service p {
+    font-size: 70%;
+  }
+  #team .team-members {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* Display 1 item per row on smaller screens */
+  }
 }

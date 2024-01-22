@@ -1,0 +1,19 @@
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 10px;
+}
+
+router-outlet {
+  flex: 1;
+  padding: 20px;
+}
+
+footer {
+  padding: 50px;
+  margin-top: auto;
+  margin-bottom: 0;
+}

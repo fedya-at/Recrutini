@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, of } from 'rxjs';
+import { tap, catchError, map } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -28,11 +30,56 @@ export class UserService {
   updateUserById(id: string, User: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/${id}`, User);
   }
-  loginUser(email: string, password: string): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/login`, { email, password });
+  register(user: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/register`, user);
   }
 
-  createUser(user: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}`, user);
+  login(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/login`, credentials).pipe(
+      tap((response) => {
+        if (response.token) {
+          this.handleAuthentication(response);
+        }
+      }),
+      catchError(this.handleError<any>('Login'))
+    );
+  }
+  logout(): void {
+    localStorage.removeItem('token');
+  }
+  private setHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token') || '';
+    console.log('Token:', token); // Log the token for debugging
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  }
+  isAuthenticated(): Observable<boolean> {
+    const token = localStorage.getItem('token');
+    console.log('Token before request:', token);
+
+    const headers = this.setHeaders();
+
+    return this.http
+      .get<any>(`${this.apiUrl}/auth/isAuthenticated`, { headers })
+      .pipe(
+        map((response) => response.isAuthenticated || false),
+        catchError(() => of(false))
+      );
+  }
+
+  private handleAuthentication(response: any): void {
+    const token = response.token;
+    localStorage.setItem('token', token);
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
+  }
+
+  getUserInfo(): Observable<any> {
+    const headers = this.setHeaders();
+    return this.http.get<any>(`${this.apiUrl}/auth/userInfo`, { headers });
   }
 }

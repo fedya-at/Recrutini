@@ -26,6 +26,8 @@ import { GereOffresComponent } from './Gere-offres/Gere-offres.component';
 import { GereUsersComponent } from './gere-users/gere-users.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { ProfileComponent } from './profile/profile.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     GereUsersComponent,
     AuthentificationComponent,
     LandingPageComponent,
+    ProfileComponent,
+    AdmindashboardComponent,
   ],
   imports: [
     BrowserModule,

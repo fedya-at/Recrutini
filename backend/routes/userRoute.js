@@ -5,13 +5,15 @@ import {
   getUserByRole,
   deleteUserById,
   updateUserById,
-  createUser,
-  getUserByLogin,
+  register,
+  login,
+  isAuthenticated,
+  getUserInfo,
 } from "../controllers/userController.js";
-
+import authenticateUser from "../middleware/authMiddleware.js";
 const router = express.Router();
 
-router.route("/").get(getAllUsers).post(createUser);
+router.route("/").get(getAllUsers);
 
 router
   .route("/:id")
@@ -19,7 +21,10 @@ router
   .delete(deleteUserById)
   .put(updateUserById);
 
+router.post("/register", register);
+router.post("/login", login);
 router.route("/role/:role").get(getUserByRole);
-router.route("/login").post(getUserByLogin);
+router.get("/auth/isAuthenticated", isAuthenticated);
+router.get("/auth/userInfo", authenticateUser, getUserInfo);
 
 export default router;

@@ -7,3 +7,20 @@
   justify-content: space-between;
   gap: 580px;
 }
+.candidat {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-direction: row;
+}
+button {
+  margin-left: 2rem;
+}
+button a {
+  text-decoration: none;
+  color: black;
+}
+button a:hover {
+  text-decoration: none;
+  color: black;
+}

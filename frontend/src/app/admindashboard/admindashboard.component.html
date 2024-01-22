@@ -1,0 +1,68 @@
+<!-- /d:/Projects/Angular/project/frontend/src/app/admindashboard/admindashboard.component.html -->
+<div class="container">
+  <h1>Admin Dashboard</h1>
+
+  <div class="header">
+    <hr />
+    <div class="elements">
+      <div class="element" (click)="showUsersSection()">
+        <p>Manage users</p>
+      </div>
+      <div class="element" (click)="showOffersSection()">
+        <p>Manage offers</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="users" *ngIf="showUsers">
+    <!-- Users Section -->
+    <h2>Manage Users</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through users and display them -->
+        <tr *ngFor="let user of users">
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button class="btn btn-secondary">Edit</button>
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </section>
+
+  <section class="offers" *ngIf="showOffers">
+    <!-- Offers Section -->
+    <h2>Manage Offers</h2>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Loop through offers and display them -->
+        <tr *ngFor="let offer of offers">
+          <td>{{ offer.title }}</td>
+          <td>{{ offer.description }}</td>
+          <td>
+            <button class="btn btn-secondary">Edit</button>
+            <button class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</div>

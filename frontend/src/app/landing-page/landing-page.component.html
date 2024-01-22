@@ -1,33 +1,242 @@
-<div class="carousel">
-  <input type="radio" id="page1cb" checked name="pages" />
-  <input type="radio" id="page2cb" name="pages" />
-  <input type="radio" id="page3cb" name="pages" />
-  <input type="radio" id="page4cb" name="pages" />
-  <input type="radio" id="page5cb" name="pages" />
-  <!-- page 1 -->
-  <div class="page" id="page1">
-    <div>Page One!</div>
-    <label title="Start"><b>START</b></label>
-  </div>
-  <!-- page 2 -->
-  <div class="page" id="page2">
-    <div>Page Two!</div>
-    <label for="page3cb" title="Next"><b>NEXT</b></label>
-  </div>
-  <!-- page 3 -->
-  <div class="page" id="page3">
-    <div>Page Three!</div>
-    <label for="page4cb" title="Next"><b>NEXT</b></label>
-  </div>
-  <!-- page 4 -->
-  <div class="page" id="page4">
-    <div>Page Four!</div>
-    <label for="page5cb" title="Next"><b>NEXT</b></label>
-  </div>
-  <!-- page 5 -->
-  <div class="page" id="page5">
-    <div>Page Five!</div>
-    <label for="page1cb" title="That's all folks!"><b>START AGAIN?</b></label>
-  </div>
-  <div class="carousel"></div>
+<!-- section 1 -->
+
+<div class="landing">
+  <section id="Header" class="mt-5" #headerSection>
+    <div class="content">
+      <div class="title">
+        <h1 class="animate__animated animate__bounceInLeft animate__delay-2s">
+          Embark on a journey of career excellence with Recrutini.
+        </h1>
+        <p
+          class="mb-2 animate__animated animate__bounceInLeft animate__delay-2s"
+        >
+          Your success story begins here!
+        </p>
+        <button
+          class="btn btn-outline-dark image animate__animated animate__fadeInUpBig animate__delay-3s"
+        >
+          Explore
+        </button>
+      </div>
+      <div
+        class="image animate__animated animate__fadeInDownBig animate__delay-2s"
+      >
+        <img
+          class="d-block w-100"
+          src="../../assets/Lekki_ Explainer.gif"
+          alt="First slide"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- section 2 -->
+  <section id="collaborators" #collaboratorsSection>
+    <h2
+      class="image animate__animated animate__fadeInRightBig animate__delay-3s"
+    >
+      Meet our Collaborators
+    </h2>
+    <p class="image animate__animated animate__fadeInLeftBig animate__delay-4s">
+      A network of industry leaders, mentors, and visionaries committed to your
+      success.
+    </p>
+    <div class="container mt-5">
+      <div class="company-logo-container">
+        <div class="company-logo-list">
+          <img
+            src="../../assets/google_logo.jpg"
+            class="company-logo image animate__animated animate__fadeIn animate__delay-2s"
+            alt="Google"
+          />
+          <img
+            src="../../assets/amazon_logo.png"
+            class="company-logo image animate__animated animate__fadeIn animate__delay-2s"
+            alt="Amazon"
+          />
+          <img
+            src="../../assets/Meta_logo.jpg"
+            class="company-logo image animate__animated animate__fadeIn animate__delay-2s"
+            alt="Meta"
+          />
+          <img
+            src="../../assets/IBM_image.jpg"
+            class="company-logo image animate__animated animate__fadeIn animate__delay-2s"
+            alt="IBM"
+          />
+          <img
+            src="../../assets/microsoft_logo.jpg"
+            class="company-logo image animate__animated animate__fadeIn animate__delay-2s"
+            alt="Microsoft"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" #servicesSection>
+    <div class="container">
+      <h2
+        class="image animate__animated animate__fadeInRightBig animate__delay-3s"
+      >
+        Our Services
+      </h2>
+      <p
+        class="image animate__animated animate__fadeInLeftBig animate__delay-4s"
+      >
+        Unlock a suite of personalized services designed to elevate your
+        professional journey
+      </p>
+      <div class="elements">
+        <div
+          class="service animate__animated animate__fadeInUpBig animate__delay-5s"
+        >
+          <img
+            src="../../assets/illustration1.png"
+            alt="Service Illustration 1"
+          />
+          <h3>Personalized Job Matching</h3>
+          <p>
+            Experience a tailored job search with our advanced matching
+            algorithms. We analyze your skills, preferences, and aspirations to
+            connect you with the perfect job opportunities.
+          </p>
+        </div>
+
+        <div
+          class="service animate__animated animate__fadeInUpBig animate__delay-6s"
+        >
+          <img
+            src="../../assets/illustration2.png"
+            alt="Service Illustration 2"
+          />
+          <h3>Career Guidance</h3>
+          <p>
+            Navigate your career path with confidence. Our expert career
+            advisors provide personalized guidance, helping you make informed
+            decisions and achieve your professional goals.
+          </p>
+        </div>
+
+        <div
+          class="service animate__animated animate__fadeInUpBig animate__delay-7s"
+        >
+          <img
+            src="../../assets/illustration3.png"
+            alt="Service Illustration 3"
+          />
+          <h3>Professional Development</h3>
+          <p>
+            Invest in your growth. Access a range of professional development
+            resources, from online courses to workshops, empowering you to stay
+            ahead in your field and unlock new opportunities.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="container">
+      <h2
+        class="image animate__animated animate__fadeInRightBig animate__delay-3s"
+      >
+        Meet the Team
+      </h2>
+      <p
+        class="image animate__animated animate__fadeInLeftBig animate__delay-4s"
+      >
+        A passionate ensemble dedicated to propelling your career to new
+        heights.
+      </p>
+      <div class="team-members">
+        <div class="member">
+          <img src="member1.jpg" alt="Member 1" />
+          <h3>Fadia Latrech</h3>
+          <p>Developer</p>
+        </div>
+        <div class="member">
+          <img src="member2.jpg" alt="Member 2" />
+          <h3>Aziz Aroug</h3>
+          <p>Designer</p>
+        </div>
+        <div class="member">
+          <img src="member3.jpg" alt="Member 3" />
+          <h3>Mohamed Amine Chakroun</h3>
+          <p>Project Manager</p>
+        </div>
+        <div class="member">
+          <img src="member4.jpg" alt="Member 4" />
+          <h3>Amira Boubaker</h3>
+          <p>Marketing Specialist</p>
+        </div>
+        <div class="member">
+          <img src="member5.jpg" alt="Member 5" />
+          <h3>Abdesslam Lahoul</h3>
+          <p>Business Analyst</p>
+        </div>
+        <div class="member">
+          <img src="member6.jpg" alt="Member 6" />
+          <h3>Ghislan Auriel </h3>
+          <p>Role: UX/UI Designer</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="opinions">
+    <div class="container">
+      <h2>Testemonials</h2>
+      <p>
+        Hear what our community has to say about their transformative journeys.
+      </p>
+      <div class="testemonials">
+        <figure class="snip1390">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample3.jpg"
+            alt="profile-sample3"
+            class="profile"
+          />
+          <figcaption>
+            <h2>Eleanor Crisp</h2>
+            <h4>UX Design</h4>
+            <blockquote>
+              Dad buried in landslide! Jubilant throngs fill streets! Stunned
+              father inconsolable - demands recount!
+            </blockquote>
+          </figcaption>
+        </figure>
+        <figure class="snip1390 hover">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample5.jpg"
+            alt="profile-sample5"
+            class="profile"
+          />
+          <figcaption>
+            <h2>Gordon Norman</h2>
+            <h4>Accountant</h4>
+            <blockquote>
+              Wormwood : Calvin, how about you? Calvin : Hard to say ma'am. I
+              think my cerebellum has just fused.
+            </blockquote>
+          </figcaption>
+        </figure>
+        <figure class="snip1390">
+          <img
+            src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/profile-sample6.jpg"
+            alt="profile-sample6"
+            class="profile"
+          />
+          <figcaption>
+            <h2>Sue Shei</h2>
+            <h4>Public Relations</h4>
+            <blockquote>
+              The strength to change what I can, the inability to accept what I
+              can't and the incapacity to tell the difference.
+            </blockquote>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
 </div>

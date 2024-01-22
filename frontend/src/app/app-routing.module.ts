@@ -1,4 +1,4 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FilteredUsersComponent } from './filtered-users/filtered-users.component';
 import { BookingComponent } from './booking/booking.component';
@@ -11,18 +11,48 @@ import { GereOffresComponent } from './Gere-offres/Gere-offres.component';
 import { GereUsersComponent } from './gere-users/gere-users.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { AuthGuard } from './auth.guard';
+import { ProfileComponent } from './profile/profile.component';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+
 const routes: Routes = [
-  { path: 'interview', component: FilteredUsersComponent },
-  { path: 'appointments', component: AppointmentsComponent },
-  { path: 'book/:id', component: BookingComponent },
-  { path: 'status', component: JobStatusComponent },
-  { path: 'offers', component: OffersComponent },
-  { path: 'create-offer', component: PostOffreComponent },
-  { path: 'offer/:id', component: OffreDetailsComponent },
-  { path: 'gere-offers', component: GereOffresComponent },
-  { path: 'users', component: GereUsersComponent },
+  {
+    path: 'interview',
+    component: FilteredUsersComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'appointments',
+    component: AppointmentsComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'book/:id', component: BookingComponent, canActivate: [AuthGuard] },
+  { path: 'status', component: JobStatusComponent, canActivate: [AuthGuard] },
+  { path: 'offers', component: OffersComponent, canActivate: [AuthGuard] },
+  {
+    path: 'create-offer',
+    component: PostOffreComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'offer/:id',
+    component: OffreDetailsComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  {
+    path: 'gere-offers',
+    component: GereOffresComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: 'users', component: GereUsersComponent, canActivate: [AuthGuard] },
   { path: 'login', component: AuthentificationComponent },
-  { path: 'welcome', component: LandingPageComponent },
+  { path: '', component: LandingPageComponent },
+  {
+    path: 'Dashboard',
+    component: AdmindashboardComponent,
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({
