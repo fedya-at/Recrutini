@@ -33,4 +33,5 @@ export class AppointmentService {
       `${this.apiUrl}/appointmentsByDate?date=${date}`
     );
   }
+ 
 }

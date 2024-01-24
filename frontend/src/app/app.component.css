@@ -7,9 +7,16 @@ header {
   padding: 10px;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .body {
-  margin-top: 8%;
-  margin-bottom: 12%;
+  margin-top: auto;
 }
 
 footer {

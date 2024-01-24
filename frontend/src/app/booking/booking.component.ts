@@ -88,12 +88,7 @@ export class BookingComponent implements OnInit {
       let meetLink = '';
       let address = '';
 
-      if (form.value.vbtnRadio === 'online') {
-        meetLink = this.generateGoogleMeetLink(dateTime);
-      } else {
-        address = 'rue Main Street';
-        meetLink = 'company-meet-link-placeholder';
-      }
+      meetLink = this.generateGoogleMeetLink(dateTime);
 
       const appointmentData = this.createAppointmentData(
         form,

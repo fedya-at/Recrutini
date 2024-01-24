@@ -29,4 +29,8 @@ export class OffreService {
   deleteOffre(id: string): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
+
+  getOfferByPostedById(id: string): Observable<any[]> {
+    return this.http.get<any>(`${this.apiUrl}/postedBy/${id}`);
+  }
 }

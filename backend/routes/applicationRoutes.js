@@ -18,5 +18,5 @@ router
   .put(updateApplicationById)
   .delete(deleteApplicationById);
 router.route("/user/:userId").get(getApplicationsByUserId);
-router.route("/offres/:offreId").get(getApplicationByOffreId);
+router.route("/:offreId").get(getApplicationByOffreId);
 export default router;

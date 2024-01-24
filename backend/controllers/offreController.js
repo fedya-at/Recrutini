@@ -109,3 +109,17 @@ export const deleteOffer = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+// Get offer by PostByID
+export const getOfferByPostedById = async (req, res) => {
+  try {
+    const postedById = req.params.PostedBy; // Ensure the parameter name matches your route definition
+
+    const offers = await Offre.find({ Postedby: postedById }).exec();
+
+    res.status(200).json({ offers });
+  } catch (error) {
+    console.error("Error fetching job offers:", error.message);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};

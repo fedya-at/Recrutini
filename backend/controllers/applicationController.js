@@ -1,4 +1,7 @@
 import Application from "../models/applicationModel.js";
+import Offre from "../models/offreModel.js";
+
+
 
 export const getAllApplications = async (req, res) => {
   try {
@@ -133,10 +136,10 @@ export const getApplicationByOffreId = async (req, res) => {
       return res.status(404).json({ error: "Offer not found" });
     }
 
-    // Find applications for the offer
-    const applications = await Application.find({ idOfOffre: offerId }).populate("idUser");
+    const applications = await Application.find({
+      idOfOffre: offerId,
+    }).populate("idUser");
 
-    // Extract relevant user information from applications
     const applicantsInfo = applications.map((application) => ({
       firstName: application.firstName,
       lastName: application.lastName,
@@ -147,7 +150,6 @@ export const getApplicationByOffreId = async (req, res) => {
       etat: application.etat,
       user: {
         _id: application.idUser._id,
-        // Include other user information as needed
       },
     }));
 
@@ -156,4 +158,4 @@ export const getApplicationByOffreId = async (req, res) => {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error" });
   }
-}
+};

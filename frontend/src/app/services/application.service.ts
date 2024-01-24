@@ -53,4 +53,7 @@ export class ApplicationService {
     const url = `${this.baseUrl}/offer/${offerId}`;
     return this.http.get<ApplicationResponse>(url);
   }
+  getOfferApplications(offerId: string): Observable<any> {
+    return this.http.get<any[]>(`${this.baseUrl}/applications/${offerId}`);
+  }
 }

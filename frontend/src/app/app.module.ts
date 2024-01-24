@@ -29,6 +29,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { HRdashboardComponent } from './hrdashboard/hrdashboard.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { HRdashboardComponent } from './hrdashboard/hrdashboard.component';
     ReactiveFormsModule,
     FormsModule,
     BrowserAnimationsModule,
+    NoopAnimationsModule,
     ToastrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,

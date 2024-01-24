@@ -1,0 +1,38 @@
+.container {
+  height: 100%;
+  margin-bottom: 30px !important;
+}
+
+#appointments-section .CalendarPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  height: auto; /* Adjust margin as needed */
+}
+
+#appointments-section h2 {
+  color: #333; /* Adjust color as needed */
+}
+
+#appointments-section #appointments-section .container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#appointments-section .calendar {
+  width: auto; /* Adjust width as needed */
+  margin-bottom: 20px;
+  height: auto; /* Adjust margin as needed */
+}
+
+#appointments-section .calendar-details {
+  margin-top: -500px;
+  width: 100%; /* Adjust width as needed */
+  max-width: 600px; /* Adjust max-width as needed */
+}
+
+/* Add additional styling as needed */
