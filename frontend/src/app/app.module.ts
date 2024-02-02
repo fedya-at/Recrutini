@@ -30,6 +30,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { HRdashboardComponent } from './hrdashboard/hrdashboard.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ApplicationDetailsComponent } from './application-details/application-details.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     ProfileComponent,
     AdmindashboardComponent,
     HRdashboardComponent,
+    ApplicationDetailsComponent,
+    NotificationsComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +70,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
       useFactory: adapterFactory,
     }),
     MatDialogModule,
+    NgxExtendedPdfViewerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

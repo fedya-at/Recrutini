@@ -17,11 +17,29 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item" *ngIf="isLoggedIn && userRole === 'admin'">
-          <a class="nav-link" href="/Dashboard">Dashboard</a>
+        <li class="nav-item dropdown" *ngIf="isLoggedIn && userRole === 'admin'">
+         <div class="dropdown">
+  <button class="btn  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Dashboard
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
         </li>
         <li class="nav-item dropdown" *ngIf="isLoggedIn && userRole === 'hr'">
-          <a class="nav-link" href="HrDashboard"> Dashboard </a>
+         <div class="dropdown">
+  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+    Dashboard
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+    <li><a class="dropdown-item" href="/Applications"><i class="fa-solid fa-envelopes-bulk"></i> Applications</a></li>
+    <li><a class="dropdown-item" href="/appointments"> <i class="fa-regular fa-calendar-check"></i> Appointments</a></li>
+    <li><a class="dropdown-item" href="/gere-offers"><i class="fa-solid fa-business-time"></i> Offers</a></li>
+  </ul>
+</div>
         </li>
         <li class="nav-item">
           <a href="/offers" class="nav-link">Jobs</a>
@@ -33,6 +51,10 @@
       <div class="d-flex" role="login">
         <button class="btn btn-outline-dark" type="submit" *ngIf="!isLoggedIn">
           <a href="/login">Login</a>
+        </button>
+        <button class="btn "  type="submit">
+                    <a href="/notifications"><i class="fa-solid fa-bell"></i></a>
+
         </button>
         <button class="btn" type="button" *ngIf="isLoggedIn">
           <a href="/profile">{{ user.firstName }} , {{ user.lastName }} </a>

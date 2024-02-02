@@ -10,13 +10,14 @@ import offreRoutes from "./routes/offreRoutes.js";
 import applicationRoutes from "./routes/applicationRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 
-const app = express();
+const app = express();  
 
 connectToDatabase();
 
 app.use(cors());
 
 app.use(bodyParser.json());
+
 
 app.get("/api/candidate/applied-jobs", (req, res) => {
   res.json(candidateAppliedJobs);

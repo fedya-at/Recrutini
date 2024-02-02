@@ -15,6 +15,8 @@ import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { HRdashboardComponent } from './hrdashboard/hrdashboard.component';
+import { ApplicationDetailsComponent } from './application-details/application-details.component';
+import { NotificationsComponent } from './notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -55,11 +57,17 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'HrDashboard',
+    path: 'Applications',
     component: HRdashboardComponent,
     canActivate: [AuthGuard],
   },
+  {
+    path:"application/:id",
+    component:ApplicationDetailsComponent,
+    canActivate: [AuthGuard],
+  },
 
+{path:'notifications',component:NotificationsComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({

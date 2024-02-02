@@ -1,0 +1,25 @@
+<!-- application-details.component.html -->
+<div class="container">
+  <h1>Application for {{ offerDetails?.title }}</h1>
+          <p>{{ applicationDetails?.etat }}</p>
+
+  <div class="userInfo">
+    <p>{{ applicationDetails?.firstName }} {{ applicationDetails?.lastName }}</p>
+    <p>{{ applicationDetails?.email }}</p>
+    <p>{{ applicationDetails?.phone }}</p>
+  </div>
+  <div class="applicationDetails">
+    <div class="Cv">
+      <!-- Display CV here -->
+<ngx-extended-pdf-viewer [src]="applicationDetails?.CV" >
+</ngx-extended-pdf-viewer>    </div>
+    <div class="coverLetter">
+      <!-- Display cover letter here -->
+      <p>{{ applicationDetails?.CoverLettre }}</p>
+    </div>
+  </div>
+  <div class="actions">
+    <button class="btn btn-primary" (click)="approveApplication()">Approve</button>
+    <button class="btn btn-danger" (click)="rejectApplication()">Reject</button>
+  </div>
+</div>

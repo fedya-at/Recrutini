@@ -103,6 +103,7 @@ export class AppointmentsComponent implements OnInit {
         hrId: hrId || 'Unknown HR',
         candidateId: candidateId || 'Unknown Candidate',
         googleMeetLink: event.meta.googleMeetLink || 'N/A',
+        address:"MainStreet 123, 12345 City, Country",
       };
     });
   }

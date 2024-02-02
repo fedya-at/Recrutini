@@ -86,7 +86,7 @@ export class BookingComponent implements OnInit {
     if (form.valid) {
       const dateTime = this.getDateTimeFromForm(form);
       let meetLink = '';
-      let address = '';
+      let address = "MainStreet 123, 12345 City, Country";
 
       meetLink = this.generateGoogleMeetLink(dateTime);
 
@@ -127,7 +127,7 @@ export class BookingComponent implements OnInit {
       time: form.value.time,
       hrId: selectedHr._id,
       googleMeetLink: meetLink,
-      address: address,
+      address: 'MainStreet 123, 12345 City, Country',
     };
   }
 
