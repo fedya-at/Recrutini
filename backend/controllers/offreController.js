@@ -42,6 +42,7 @@ export const createOffer = async (req, res) => {
     salary,
     whatWeOffre,
     dateFin,
+    Postedby,
   } = req.body;
 
   try {
@@ -57,6 +58,7 @@ export const createOffer = async (req, res) => {
       salary,
       whatWeOffre,
       dateFin,
+      Postedby,
     });
 
     const savedOffer = await newOffer.save();
@@ -121,5 +123,31 @@ export const getOfferByPostedById = async (req, res) => {
   } catch (error) {
     console.error("Error fetching job offers:", error.message);
     res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
+
+export const searchByCriteria = async (req, res) => {
+  const { location, skills } = req.params;
+  console.log("Searching for location and skills:", location, skills);
+
+  try {
+    const offres = await Offre.find({
+      location: location,
+      $or: [
+        { skills: { $regex: new RegExp(skills, "i") } },
+        { title: { $regex: new RegExp(skills, "i") } },
+      ],
+    });
+
+    if (!offres || offres.length === 0) {
+      console.log("No job offers found for the specified criteria");
+      res.status(404).send("No job offers found for the specified criteria");
+    } else {
+      res.json(offres);
+    }
+  } catch (error) {
+    console.error("Error occurred:", error);
+    res.status(500).send("Something went wrong on the server");
   }
 };

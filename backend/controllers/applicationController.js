@@ -159,3 +159,15 @@ export const getApplicationByOffreId = async (req, res) => {
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
+export const getApprovedApplications = async (req, res) => {
+  try {
+    const approvedApplications = await Application.find({ etat: "approved" });
+    const approvedUserIds = approvedApplications.map(
+      (application) => application.idUser
+    );
+
+    res.json(approvedUserIds);
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};

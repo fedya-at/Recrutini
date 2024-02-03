@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OffreService } from '../services/offre.service';
 import { IndividualConfig } from 'ngx-toastr';
 import { CommunService, toastPayload } from '../services/commun.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-offers',
@@ -11,7 +12,10 @@ import { CommunService, toastPayload } from '../services/commun.service';
 export class OffersComponent implements OnInit {
   jobOffers: any[] = [];
   toast!: toastPayload;
-  constructor(public os: OffreService, private cs: CommunService) {}
+  location: string = '';
+  skills: string = '';
+
+  constructor(public os: OffreService, private cs: CommunService,private router:Router) {}
   ngOnInit(): void {
     this.loadOffers();
   }
@@ -37,5 +41,24 @@ export class OffersComponent implements OnInit {
       } as IndividualConfig,
     };
     this.cs.showToast(this.toast);
+  }
+
+  searchJobs() {
+    this.location = this.location.toLowerCase();
+    this.skills = this.skills.toLowerCase();
+
+    this.os.searchByCriteria(this.location, this.skills).subscribe(
+      (data: any) => {
+        this.os.updateJobResults(data);
+        if (data && data.length > 0) {
+          // Redirect to the desired route upon successful search
+          this.router.navigate(['offers']);
+        }
+      },
+      (error) => {
+        console.error('Error:', error);
+        // Handle error as needed
+      }
+    );
   }
 }

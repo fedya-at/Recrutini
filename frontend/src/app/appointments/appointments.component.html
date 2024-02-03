@@ -11,9 +11,9 @@
               ></mwl-calendar-month-view>
             </div>
             
-            <div class="calendar-details" *ngIf="selectedDate !== undefined">
+            <div class="calendar-details table-responsive" *ngIf="selectedDate !== undefined">
               <h2>Appointments for {{ selectedDate | date : "longDate" }}</h2>
-              <table class="table" >
+              <table class="table min-vw-50" >
                 <thead>
                   <tr>
                     <th scope="col">Time</th>

@@ -1,0 +1,88 @@
+<section id="Header" class="mt-5" #headerSection>
+    <div class="content">
+     <div class="title">
+    <h1 class="animate__animated animate__heartBeat animate__delay-1s">
+        Ignite Your Professional Journey with Recrutini.
+    </h1>
+    <p class="mb-2 animate__animated animate__fadeInLeft animate__delay-1s">
+        Craft Your Career Tale with Us!
+    </p>
+     <a href="#generateSection" class="btn btn-outline-primary image animate__animated animate__zoomIn animate__delay-1s">
+        Get Started
+    </a>
+</div>
+
+      <div
+        class="image animate__animated animate__fadeInDownBig animate__delay-1s"
+      >
+        <img
+          class="d-block w-100"
+          src="../../assets/Teamwork flat illustration.gif"
+          alt="First slide"
+        />
+      </div>
+    </div>
+  </section>
+
+<section id="generateSection">
+    <!-- your-component.component.html -->
+
+<div class="container">
+
+  <!-- Resume Generation Form -->
+  <form (ngSubmit)="generateResume()" class="mb-4">
+      <h2>Genereate Resume</h2>
+
+    <div class="mb-3">
+      <label for="university" class="form-label">University Name:</label>
+      <input type="text" id="university" name="university" class="form-control" [(ngModel)]="resumeData.university" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="degree" class="form-label">Degree:</label>
+      <input type="text" id="degree" name="degree" class="form-control" [(ngModel)]="resumeData.degree" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="skills" class="form-label">Skills (comma-separated):</label>
+      <input type="text" id="skills" name="skills" class="form-control" [(ngModel)]="resumeData.skills" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generate Resume</button>
+  </form>
+
+  <!-- Cover Letter Generation Form -->
+  <form (ngSubmit)="generateCoverLetter()">
+          <h2>Genereate Cover letter</h2>
+
+    <div class="mb-3">
+      <label for="jobTitle" class="form-label">Job Title:</label>
+      <input type="text" id="jobTitle" name="jobTitle" class="form-control" [(ngModel)]="coverLetterData.jobTitle" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="jobDescription" class="form-label">Job Description:</label>
+      <textarea id="jobDescription" name="jobDescription" class="form-control" [(ngModel)]="coverLetterData.jobDescription" required></textarea>
+    </div>
+
+    <!-- Reusing the University, Degree, and Skills fields for Cover Letter -->
+    <div class="mb-3">
+      <label for="coverLetterUniversity" class="form-label">University Name:</label>
+      <input type="text" id="coverLetterUniversity" name="coverLetterUniversity" class="form-control" [(ngModel)]="resumeData.university" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="coverLetterDegree" class="form-label">Degree:</label>
+      <input type="text" id="coverLetterDegree" name="coverLetterDegree" class="form-control" [(ngModel)]="resumeData.degree" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="coverLetterSkills" class="form-label">Skills (comma-separated):</label>
+      <input type="text" id="coverLetterSkills" name="coverLetterSkills" class="form-control" [(ngModel)]="resumeData.skills" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Generate Cover Letter</button>
+  </form>
+</div>
+
+</section>

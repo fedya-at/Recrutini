@@ -56,4 +56,10 @@ export class ApplicationService {
   getOfferApplications(offerId: string): Observable<any> {
     return this.http.get<any[]>(`${this.baseUrl}/applications/${offerId}`);
   }
+
+  getUserIdsFromApprovedApplications(): Observable<string[]> {
+    const approvedApplicationsUrl = `${this.baseUrl}/approved/userIds`;
+
+    return this.http.get<string[]>(approvedApplicationsUrl);
+  }
 }

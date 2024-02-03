@@ -33,6 +33,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ApplicationDetailsComponent } from './application-details/application-details.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { NotificationsComponent } from './notifications/notifications.component';
+import { ResumesComponent } from './resumes/resumes.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { NotificationsComponent } from './notifications/notifications.component'
     HRdashboardComponent,
     ApplicationDetailsComponent,
     NotificationsComponent,
+    ResumesComponent,
   ],
   imports: [
     BrowserModule,

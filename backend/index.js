@@ -18,7 +18,6 @@ app.use(cors());
 
 app.use(bodyParser.json());
 
-
 app.get("/api/candidate/applied-jobs", (req, res) => {
   res.json(candidateAppliedJobs);
 });

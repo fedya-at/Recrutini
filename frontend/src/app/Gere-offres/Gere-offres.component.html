@@ -1,5 +1,7 @@
 <!-- offer-list.component.html -->
 <div class="container mt-5">
+  <h1>  List of Offers
+</h1>
   <table class="table table-bordered table-hover">
     <thead>
       <tr>
@@ -39,8 +41,152 @@
       </tr>
     </tbody>
   </table>
-</div>
+  <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addOffre" > Add Job Offer</button>
 
+</div>
+<div class="modal fade" id="addOffre" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+<form (ngSubmit)="onCreateSubmit()" class="mt-4">
+          <div class="mb-3">
+            <label for="title" class="form-label">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              class="form-control"
+              [(ngModel)]="newOffer.title"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="company" class="form-label">Company:</label>
+            <input
+              type="text"
+              id="company"
+              name="company"
+              class="form-control"
+              [(ngModel)]="newOffer.company"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="companyDescription" class="form-label"
+              >Company Description:</label
+            >
+            <textarea
+              id="companyDescription"
+              name="companyDescription"
+              class="form-control"
+              [(ngModel)]="newOffer.companyDescription"
+              required
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="employeesNeeded" class="form-label"
+              >Employees Needed:</label
+            >
+            <input
+              type="number"
+              id="employeesNeeded"
+              name="employeesNeeded"
+              class="form-control"
+              [(ngModel)]="newOffer.employeesNeeded"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="location" class="form-label">Location:</label>
+            <input
+              type="text"
+              id="location"
+              name="location"
+              class="form-control"
+              [(ngModel)]="newOffer.location"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Description:</label>
+            <textarea
+              id="description"
+              name="description"
+              class="form-control"
+              [(ngModel)]="newOffer.description"
+              required
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="skills" class="form-label">Skills:</label>
+            <input
+              type="text"
+              id="skills"
+              name="skills"
+              class="form-control"
+              [(ngModel)]="newOffer.skills"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="salary" class="form-label">Salary:</label>
+            <input
+              type="number"
+              id="salary"
+              name="salary"
+              class="form-control"
+              [(ngModel)]="newOffer.salary"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="dateFin" class="form-label">Closing Date:</label>
+            <input
+              type="date"
+              id="dateFin"
+              name="dateFin"
+              class="form-control"
+              [(ngModel)]="newOffer.dateFin"
+              required
+            />
+          </div>
+ <input
+    type="hidden"
+    id="Postedby"
+    name="Postedby"
+    [(ngModel)]="newOffer.Postedby"
+  />
+          <div class="modal-footer">
+            <div>
+              <button class="btn btn-success" type="submit">
+                Add Offer
+              </button>
+            </div>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </form>      </div>
+   
+    </div>
+  </div>
+</div>
 <div
   class="modal fade"
   id="editModal"
@@ -48,7 +194,7 @@
   aria-labelledby="exampleModalLabel"
   aria-hidden="true"
 >
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Edit Offer</h5>

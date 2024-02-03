@@ -7,6 +7,7 @@ import {
   deleteApplicationById,
   getApplicationsByUserId,
   getApplicationByOffreId,
+  getApprovedApplications,
 } from "../controllers/applicationController.js";
 
 const router = express.Router();
@@ -19,4 +20,6 @@ router
   .delete(deleteApplicationById);
 router.route("/user/:userId").get(getApplicationsByUserId);
 router.route("/:offreId").get(getApplicationByOffreId);
+router.route("/approved/userIds").get(getApprovedApplications);
+
 export default router;

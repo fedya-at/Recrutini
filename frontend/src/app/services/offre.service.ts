@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -32,5 +32,16 @@ export class OffreService {
 
   getOfferByPostedById(id: string): Observable<any[]> {
     return this.http.get<any>(`${this.apiUrl}/postedBy/${id}`);
+  }
+  searchByCriteria(ville: string, keysOrTitle: string): Observable<any> {
+    return this.http.get(
+      `${this.apiUrl}/searchByCriteria/${ville}/${keysOrTitle}`
+    );
+  }
+  private ComponentServiceService = new BehaviorSubject<any[]>([]);
+  jobResults$ = this.ComponentServiceService.asObservable();
+
+  updateJobResults(results: any[]) {
+    this.ComponentServiceService.next(results);
   }
 }

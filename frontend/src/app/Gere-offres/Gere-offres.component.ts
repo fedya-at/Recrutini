@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OffreService } from '../services/offre.service';
 import { IndividualConfig } from 'ngx-toastr';
 import { CommunService, toastPayload } from '../services/commun.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-Gere-offres',
@@ -12,10 +13,18 @@ export class GereOffresComponent implements OnInit {
   offers: any[] = [];
   editedOffer: any = {};
   toast!: toastPayload;
+  newOffer: any = {};
 
-  constructor(private os: OffreService, private cs: CommunService) {}
+  constructor(
+    private os: OffreService,
+    private cs: CommunService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
+    this.userService.getUserInfo().subscribe((userInfo) => {
+      this.newOffer.Postedby = userInfo.id;
+    });
     this.loadsOffers();
   }
   showToast(type: string, message: string) {
@@ -73,5 +82,18 @@ export class GereOffresComponent implements OnInit {
     } else {
       this.showToast('error', 'Invalid offer data');
     }
+  }
+
+  onCreateSubmit(): void {
+    this.os.createOffer(this.newOffer).subscribe(
+      (response) => {
+        this.loadsOffers();
+        this.showToast('success', 'Offer created successfully');
+      },
+      (error) => {
+        this.showToast('error', 'Invalid offer data' + error.message);
+        console.log('error', 'Invalid offer data' + error.message);
+      }
+    );
   }
 }

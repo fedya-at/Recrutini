@@ -1,0 +1,57 @@
+#Header {
+  background-color: #ffff;
+  padding: 5rem 0;
+}
+
+#Header .content {
+  max-width: 70rem;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 8rem;
+}
+
+#Header .title {
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+#Header .title h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #343a40;
+}
+
+#Header .title p {
+  color: #696c6f;
+  font-size: 1.2rem;
+  margin-bottom: 0;
+}
+#Header .title button {
+  max-width: fit-content;
+}
+#Header .image {
+  right: 0;
+  bottom: 0;
+}
+
+#Header .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#header a {
+    width: 10px;
+}
+section {
+  height: 100vh;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  gap: 20px;
+}
