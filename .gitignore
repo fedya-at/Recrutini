@@ -3,6 +3,7 @@ backend/node_modules/
 
 # Ignore .env files in the backend folder
 backend/.env
+backend/client_secret_167766612903-5b3vi7tk1kdcbk0gpj7i8r3gkhlu4a2m.apps.googleusercontent.com.json
 
 # Ignore node_modules in the frontend folder
 frontend/node_modules/
